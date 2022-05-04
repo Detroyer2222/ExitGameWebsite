@@ -3,7 +3,9 @@
 </script>
 
 <main>
-Here goes the picture of the raumplan and help as to what to do with the name of the rooms
+
+<img src="Raumplan.png" alt="Bild von Raumplan">
+
 </main>
 
 <style>
