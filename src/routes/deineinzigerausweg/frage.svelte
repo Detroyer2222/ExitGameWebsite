@@ -5,9 +5,11 @@ import { writable } from "svelte/store";
 
 let elapsedTime : number = 0; // global?
 
-let Questions : string = "Question to be asked"
+let Question : string = "Question to be asked"
 let Answer : string = "123" //maybe have multiple answers if there is a bit of ambiguity
 let Hints : string[] = ["Hint 1", "Hint 2"]
+let AnswerValue: string;
+let AnswerCorrect: boolean = false;
 
 // todo define a timer that starts on page first visited and shows hints
 
@@ -23,15 +25,19 @@ function changeElapsedTime(){
     elapsedTime += 1;
 }
 
-   //FormValidation
-function validateForm() {
-  let x = document.forms["answerform"]["fanswer"].value;
-  if (x == Answer) { //Referenz Auf die AnwortVariable
-    return true
-  }
+function ValidateAnswer()
+{
+    if(AnswerValue === Answer)
+    {
+        //answer is correct
+        AnswerCorrect = true;
+    }
+    else
+    {
+        //answer is incorrect
+        AnswerCorrect = false;
+    }
 }
-
-
 
 </script>
 
@@ -40,7 +46,7 @@ function validateForm() {
 Here go the to be defined questions with help.
 A reference to morsecode route is needed here.
 
-<p class="question">{Questions}</p>
+<p class="question">{Question}</p>
 
 {#if elapsedTime >= 0}
     <p class="hint">{Hints[0]}</p>
@@ -49,14 +55,11 @@ A reference to morsecode route is needed here.
     <p class="hint">{Hints[1]}</p>
 {/if}
 
-<form name="answerform" onsubmit="return validateForm()" action="Redirect" method="post">
-    Answer: <input type="text" name="fanswer">
-    <input type="submit" value="Submit">
-</form>
+<input type="submit" on:change={ValidateAnswer} value={AnswerValue} disabled={AnswerCorrect}>
 
-<script>
- 
-</script>
+{#if AnswerCorrect}
+asdf
+{/if}
 
 </main>
 
