@@ -6,12 +6,11 @@ import { writable } from "svelte/store";
 let elapsedTime : number = 0; // global?
 
 let Question : string = "Question to be asked"
-let Answer : string = "123" //maybe have multiple answers if there is a bit of ambiguity
+let Answer : string = "123" 
 let Hints : string[] = ["Hint 1", "Hint 2"]
 let AnswerValue: string;
 let AnswerCorrect: boolean = false;
 
-// todo define a timer that starts on page first visited and shows hints
 
 onMount(async () => 
 {
@@ -55,10 +54,10 @@ A reference to morsecode route is needed here.
     <p class="hint">{Hints[1]}</p>
 {/if}
 
-<input type="submit" on:change={ValidateAnswer} value={AnswerValue} disabled={AnswerCorrect}>
+<input type="submit" on:change={ValidateAnswer} bind:value={AnswerValue} disabled={AnswerCorrect}>
 
 {#if AnswerCorrect}
-asdf
+Do Action if Answer is correct
 {/if}
 
 </main>
