@@ -5,9 +5,9 @@ import { writable } from "svelte/store";
 
 let elapsedTime : number = 0; // global?
 
-let Question : string = "Question to be asked"
-let Answer : string = "123" 
-let Hints : string[] = ["Hint 1", "Hint 2"]
+let Question : string = "Wann startete das Duale Masterprogramm an der DHBW Stuttgart?"
+let Answer : string = "2011" 
+let Hints : string[] = ["Brauchst du Hilfe? Guck mal da drüben. Ich hab gehört, dass die Antwort sich dort irgendwo versteckt...", "Schon im File-System probiert?"]
 let AnswerValue: string;
 let AnswerCorrect: boolean = false;
 
@@ -15,7 +15,7 @@ let AnswerCorrect: boolean = false;
 onMount(async () => 
 {
     if(elapsedTime == 0){
-        setInterval(changeElapsedTime, 1000) //change to 120.000 for 2 minutes
+        setInterval(changeElapsedTime, 4000) //change to 120.000 for 2 minutes
     }
 });
 
@@ -41,29 +41,30 @@ function ValidateAnswer()
 </script>
 
 <main>
-    
-Here go the to be defined questions with help.
-A reference to morsecode route is needed here.
 
+<a sveltekit:prefetch href="/morsecode">Morsecode</a>
+
+<p>Access denied: Sicherheitsfrage nicht beantwortet</p>
 <p class="question">{Question}</p>
 
-{#if elapsedTime >= 0}
-    <p class="hint">{Hints[0]}</p>
-{/if}
-{#if elapsedTime >= 0}
-    <p class="hint">{Hints[1]}</p>
-{/if}
-
-<input type="submit" on:change={ValidateAnswer} bind:value={AnswerValue} disabled={AnswerCorrect}>
+<input type="text" on:change={ValidateAnswer} bind:value={AnswerValue} disabled={AnswerCorrect}>
 
 {#if AnswerCorrect}
-Do Action if Answer is correct
+<meta http-equiv="refresh" content="0; url=/raum"/>
 {/if}
+
+
+
+{#if elapsedTime >= 1}
+    <p>{Hints[0]}</p>
+{/if}
+{#if elapsedTime >= 2}
+    <p>{Hints[1]}</p>
+{/if}
+
 
 </main>
 
 <style>
-    .hint{
-        font-size: large;
-    }
+    
 </style>
