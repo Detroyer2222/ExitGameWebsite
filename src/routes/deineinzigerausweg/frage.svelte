@@ -1,7 +1,6 @@
 <script lang="ts">
 
-import { onDestroy, onMount } from "svelte";
-import { writable } from "svelte/store";
+import { onMount } from "svelte";
 
 let elapsedTime : number = 0; // global?
 
@@ -47,6 +46,12 @@ function ValidateAnswer()
 <p>Access denied: Sicherheitsfrage nicht beantwortet</p>
 <p class="question">{Question}</p>
 
+{#if elapsedTime >= 0}
+    <p class="hint">{Hints[elapsedTime]}</p>
+{/if}
+
+{#if elapsedTime >= 0}
+    <p class="hint">{Hints[elapsedTime]}</p>
 <input type="text" on:change={ValidateAnswer} bind:value={AnswerValue} disabled={AnswerCorrect}>
 
 {#if AnswerCorrect}
