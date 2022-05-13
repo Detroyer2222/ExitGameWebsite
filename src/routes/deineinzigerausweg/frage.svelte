@@ -1,7 +1,6 @@
 <script lang="ts">
 
-import { onDestroy, onMount } from "svelte";
-import { writable } from "svelte/store";
+import { onMount } from "svelte";
 
 let elapsedTime : number = 0; // global?
 
@@ -48,10 +47,10 @@ A reference to morsecode route is needed here.
 <p class="question">{Question}</p>
 
 {#if elapsedTime >= 0}
-    <p class="hint">{Hints[0]}</p>
+    <p class="hint">{Hints[elapsedTime]}</p>
 {/if}
 {#if elapsedTime >= 0}
-    <p class="hint">{Hints[1]}</p>
+    <p class="hint">{Hints[elapsedTime]}</p>
 {/if}
 
 <input type="submit" on:change={ValidateAnswer} bind:value={AnswerValue} disabled={AnswerCorrect}>

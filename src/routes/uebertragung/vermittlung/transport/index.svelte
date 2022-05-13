@@ -31,7 +31,7 @@ function SendAnswer()
 {
     if(ServerAnswers.length > AnswersSent)
     {
-        const name = AnswersSent === 2 ? " "+UserName+"?" : "";
+        const name = AnswersSent === 2 ? " " + UserName + "?" : "";
         const message = ServerAnswers[AnswersSent]+name;
         Messages.push(message);
     }
