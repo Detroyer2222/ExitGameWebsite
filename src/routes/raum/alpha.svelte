@@ -6,9 +6,9 @@
 
 <main>
 
-    <div>
-        Hier kommst du bestimmt weiter http://localhost:3000/thefinish
-    </div>
+    <img src="Morsezeichen.png" alt="Bild von Morsecode">
+    <p></p>
+    <a sveltekit:prefetch href="/deineinzigerausweg/frage">Question page</a>
 
 </main>
 
