@@ -6,7 +6,7 @@
     
     <main>
     
-        <img src="../Morse/Beta_Morsetabelle.png" alt="Bild von Morsecode" width="200px">
+        <img src="../Morse/Zeta_Morsetabelle.png" alt="Bild von Morsecode" width="200px">
         <p></p>
         <a sveltekit:prefetch href="/deineinzigerausweg/frage">Question page</a>
     
