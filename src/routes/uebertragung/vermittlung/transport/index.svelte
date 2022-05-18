@@ -1,162 +1,171 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+import { onMount } from "svelte";
 
-	let AnswersSent: number = 0;
-	let ChatBox: string = '';
-	let UserName: string = '';
-	let IsAskingUserName: boolean = false;
-	let ServerAnswers: string[] = [
-		'Hallo?',
-		'Wer bist du?',
-		'Brauchst du Hilfe',
-		'Wo bist du denn?',
-		'Okay ich schicke jemand vorbei um dir zu helfen!'
-	];
-	let Messages: string[] = [];
-	let Users: string[] = [];
 
-	async function SendMessage() {
-		Messages.push(ChatBox);
+let AnswersSent: number = 0;
+let ChatBox: string = "";
+let UserName: string = "";
+let IsAskingUserName: boolean = false;
+let ServerAnswers: string[] = ["Hallo?", "Wer bist du?", "Brauchst du Hilfe", "Wo bist du denn?", "Okay ich schicke jemand vorbei um dir zu helfen!"];
+let Messages: string[] = [];
+let Users: string [] = [];
 
-		if (IsAskingUserName) {
-			UserName = ChatBox;
-		}
+async function SendMessage()
+{
+    Messages.push(ChatBox);
 
-		ChatBox = '';
+    if(IsAskingUserName)
+    {
+        UserName = ChatBox
+    }
 
-		UpdateMessages();
-		await delay(500);
+    ChatBox = "";
 
-		SendAnswer();
-	}
+    UpdateMessages();
+    await delay(500);
 
-	function SendAnswer() {
-		if (ServerAnswers.length > AnswersSent) {
-			const name = AnswersSent === 2 ? ' ' + UserName + '?' : '';
-			const message = ServerAnswers[AnswersSent] + name;
-			Messages.push(message);
-		} else {
-			//Game finished route to some success screen
-		}
+    SendAnswer();
+}
 
-		if (AnswersSent === 1) {
-			IsAskingUserName = true;
-		}
+function SendAnswer()
+{
+    if(ServerAnswers.length > AnswersSent)
+    {
+        const name = AnswersSent === 2 ? " " + UserName + "?" : "";
+        const message = ServerAnswers[AnswersSent]+name;
+        Messages.push(message);
+    }
+    else
+    {
+        //Game finished route to some success screen
+    }
 
-		AnswersSent = AnswersSent + 1;
-		UpdateMessages();
-	}
+    if(AnswersSent === 1)
+    {
+        IsAskingUserName = true;
+    }
 
-	async function AddUsersToChat() {
-		Users.push('User');
-		Users = Users;
-		await delay(300);
+    AnswersSent = AnswersSent + 1;
+    UpdateMessages();
+}
 
-		Users.push('Server');
-		Users = Users;
-		await delay(100);
+async function AddUsersToChat()
+{
+    Users.push("User");
+    Users = Users
+    await delay(300);
 
-		SendAnswer();
-	}
+    Users.push("Server");
+    Users = Users
+    await delay(100);
 
-	async function HandleKeypress(event: any) {
-		if (event.key === 'Enter') {
-			await SendMessage();
-		}
-	}
+    SendAnswer();
+}
 
-	onMount(async () => {
-		await AddUsersToChat();
-	});
+async function HandleKeypress(event: any)
+{
+    if (event.key === 'Enter')
+    {
+        await SendMessage();
+    }  
+}
 
-	function delay(ms: number) {
-		return new Promise((resolve) => setTimeout(resolve, ms));
-	}
+onMount( async () => 
+{
+    await AddUsersToChat();
+});
 
-	function UpdateMessages() {
-		Messages = Messages;
-	}
+function delay(ms: number) 
+{
+    return new Promise( resolve => setTimeout(resolve, ms) );
+};
+
+function UpdateMessages()
+{
+    Messages = Messages;
+}
+
 </script>
 
-<html lang="en">
-	<main>
-		<div class="container">
-			<div class="chatWindow">
-				{#each Users as user}
-					<div class="connectionBubble">{user} joined Chat</div>
-				{/each}
+<main>
+    <div class="container">
+        <div class="chatWindow">
+            {#each Users as user}
+            <div class="connectionBubble">{user} joined Chat</div>
+            {/each}
+    
+            {#each Messages as message, i}
+            {#if (i % 2) === 1}
+            <div class="chatBubble responseBubble">{message}</div>
+            {:else}
+            <div class="chatBubble answerBubble">{message}</div>
+            {/if}
+            {/each}
+        </div>
+        <div class="actionContainer">
+            <input class="chatBox" bind:value={ChatBox} on:keydown={HandleKeypress}>
+            <button on:click={SendMessage}>Send</button>
+        </div>
+    </div>
+</main>
 
-				{#each Messages as message, i}
-					{#if i % 2 === 1}
-						<div class="chatBubble responseBubble">{message}</div>
-					{:else}
-						<div class="chatBubble answerBubble">{message}</div>
-					{/if}
-				{/each}
-			</div>
-			<div class="actionContainer">
-				<input class="chatBox" bind:value={ChatBox} on:keydown={HandleKeypress} />
-				<button on:click={SendMessage}>Send</button>
-			</div>
-		</div>
-	</main>
+<style>
+.container
+{
+    display: grid;
+    flex-direction: column;
+}
+.actionContainer
+{
+    justify-self: right;
+}
+.chatWindow
+{
+    display: grid;
+    flex-direction: column;
+    background-color: #FAF9F6;
+    margin: 5em;
+    width: 20em;
+    justify-self: center;
+}
 
-	<style>
-		.container {
-			display: grid;
-			flex-direction: column;
-		}
-		.actionContainer {
-			justify-self: right;
-		}
-		.chatWindow {
-			display: grid;
-			flex-direction: column;
-			background-color: #faf9f6;
-			margin: 5em;
-			width: 20em;
-			justify-self: center;
-		}
+.connectionBubble
+{
+    justify-self: center;
+    border-radius: 6px;
+    font-size: small;
+    background-color: #636363;
+    margin: 0.4em;
+    padding: 0.25em;
+    color: white;
+}
 
-		.connectionBubble {
-			justify-self: center;
-			border-radius: 6px;
-			font-size: small;
-			background-color: #636363;
-			margin: 0.4em;
-			padding: 0.25em;
-			color: white;
-		}
+.chatBubble
+{
+    margin: 0.5em;
+    padding: 0.3em;
+    border-radius: 10px;
+    height: fit-content;
+    font-size: medium;
+    width: fit-content;
+}
 
-		.chatBubble {
-			margin: 0.5em;
-			padding: 0.3em;
-			border-radius: 10px;
-			height: fit-content;
-			font-size: medium;
-			width: fit-content;
-		}
+.answerBubble
+{
+    justify-self: left;
+    background-color: #8e8e93;
+    color: white;
+}
 
-		.answerBubble {
-			justify-self: left;
-			background-color: #8e8e93;
-			color: white;
-		}
+.responseBubble
+{
+    justify-self: right;
+    background-color: #147efb;
+    color: white;
+}
 
-		.responseBubble {
-			justify-self: right;
-			background-color: #147efb;
-			color: white;
-		}
-
-		.chatBox {
-			width: 20em;
-		}
-
-		main,
-		html {
-			font-family: 'Courier New', Courier, monospace;
-			background-color: #fefaf3;
-		}
-	</style>
-</html>
+.chatBox
+{
+    width: 20em;
+}
+</style>
