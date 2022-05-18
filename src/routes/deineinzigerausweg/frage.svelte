@@ -120,37 +120,3 @@
 		}
 	</style>
 </html>
-<main>
-
-    <a sveltekit:prefetch href="/morsecode">Morsecode</a>
-
-    <p>Access denied: Sicherheitsfrage nicht beantwortet</p>
-    <p class="question">{Question}</p>
-
-    {#if elapsedTime >= 0}
-        <p class="hint">{Hints[elapsedTime]}</p>
-    {/if}
-
-    {#if elapsedTime >= 0}
-        <p class="hint">{Hints[elapsedTime]}</p>
-    <input type="text" on:change={ValidateAnswer} bind:value={AnswerValue} disabled={AnswerCorrect}>
-    {/if}
-    
-    {#if AnswerCorrect}
-    <meta http-equiv="refresh" content="0; url=/raum"/>
-    {/if}
-
-
-
-    {#if elapsedTime >= 1}
-        <p>{Hints[0]}</p>
-    {/if}
-    {#if elapsedTime >= 2}
-        <p>{Hints[1]}</p>
-    {/if}
-
-</main>
-
-<style>
-    
-</style>
