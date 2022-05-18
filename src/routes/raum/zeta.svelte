@@ -3,7 +3,7 @@
 	</script>
 
 	<head>
-		<title>Raumplan</title>
+		<title>Zeta</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link
@@ -17,12 +17,17 @@
 	<main>
 		<div class="container">
 			<div class="col-8">
-				<img class="image" src="./Raumplan.png" alt="Bild von Raumplan" width="1100px" />
+				<img
+					class="image"
+					src="../Morse/Zeta_Morsetabelle.png"
+					alt="Bild von Morsecode"
+					width="1100px"
+				/>
 			</div>
 			<div class="col-4">
-				<h2 style="margin-bottom:30px">Raumplan</h2>
-				<p>Routen is hier bestimmt wichtig.</p>
-				<p>Musst bloß wissen wohin.</p>
+				<h2 style="margin-bottom:30px">Zeta</h2>
+				<p />
+				<p />
 				<a sveltekit:prefetch class="btn" href="/deineinzigerausweg/frage"
 					>-> zur Question page</a
 				>
