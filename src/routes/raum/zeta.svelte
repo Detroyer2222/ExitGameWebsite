@@ -28,9 +28,8 @@
 				<h2 style="margin-bottom:30px">Zeta</h2>
 				<p />
 				<p />
-				<a sveltekit:prefetch class="btn" href="/deineinzigerausweg/frage"
-					>-> zur Question page</a
-				>
+				<a sveltekit:prefetch class="btn" href="/">
+					Route am besten von hier</a>
 			</div>
 		</div>
 	</main>

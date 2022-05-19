@@ -23,9 +23,6 @@
 				<h2 style="margin-bottom:30px">Raumplan</h2>
 				<p>Routen is hier bestimmt wichtig.</p>
 				<p>Musst bloß wissen wohin.</p>
-				<a sveltekit:prefetch class="btn" href="/deineinzigerausweg/frage"
-					>-> zur Question page</a
-				>
 			</div>
 		</div>
 	</main>

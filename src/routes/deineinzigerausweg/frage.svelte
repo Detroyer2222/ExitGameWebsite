@@ -6,8 +6,8 @@
 	let Question: string = 'Wann startete das Duale Masterprogramm an der DHBW Stuttgart?';
 	let Answer: string = '2011';
 	let Hints: string[] = [
-		'Brauchst du Hilfe? Guck mal da drüben. Ich hab gehört, dass die Antwort sich dort irgendwo versteckt...',
-		'Schon im File-System probiert?'
+		'Da gibts bestimmt Dateien auf dem Computer',
+		'Schon auf dem Desktop geschaut'
 	];
 	let AnswerValue: string;
 	let AnswerCorrect: boolean;
@@ -15,7 +15,7 @@
 
 	onMount(async () => {
 		if (elapsedTime == 0) {
-			setInterval(changeElapsedTime, 30000); //change to 120.000 for 2 minutes
+			setInterval(changeElapsedTime, 120000); //change to 120.000 for 2 minutes
 		}
 	});
 

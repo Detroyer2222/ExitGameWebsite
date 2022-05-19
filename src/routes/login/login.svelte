@@ -71,7 +71,7 @@
 									type="password"
 									class="form-control"
 									id="password"
-									placeholder="mac"
+									placeholder="macadresse"
 									bind:value={password}
 								/>
 							</div>
