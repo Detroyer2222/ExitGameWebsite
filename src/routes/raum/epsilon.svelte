@@ -29,7 +29,7 @@
 				<p />
 				<p />
 				<a sveltekit:prefetch class="btn" href="/">
-					Route am besten von hier</a>
+					Wenn du die richtigen Wörter hast mach hier weiter</a>
 			</div>
 		</div>
 	</main>

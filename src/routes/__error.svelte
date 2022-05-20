@@ -137,12 +137,13 @@
 		<span />
 		<ul>
 			<li>
-				Schreibfehler, Schreibfehler, Schreibfehler... solltest mal checken ob du deutsch schreiben
-				kannst
+				Suchst du einen Raum dann Route dort hin mit /Raum/x
 			</li>
 			<li>
-				Naja, vielleicht hast du auch was durcheinander gebracht. Schau mal auf die Reihenfolge,
-				vielleicht ist da was falsch
+				Hast du einen Schreibfehler. Aufpassen Deutsche Sonderzeichen sind nicht erlaubt.
+			</li>
+			<li>
+				Ist alles in der richtigen Reihenfolge?
 			</li>
 
 			{#if showLastRiddle}

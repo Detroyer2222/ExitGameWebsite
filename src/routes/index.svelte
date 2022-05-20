@@ -1,7 +1,7 @@
 <html lang="en">
     <main>
         <div class="container">
-            Jetzt musst du routen, solltest es halt richtig anstellen xD
+            Jetzt musst du routen, achte auf die richtige Reihenfolge
         </div>
     </main>
 </html>
