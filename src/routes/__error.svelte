@@ -147,15 +147,17 @@
 
 			{#if showLastRiddle}
 				<li>
-					<a sveltekit:prefetch class="btn" href="/uebertragung/vermittlung/transport"
-						>-> Hier kommst du zum letzten Rätsel (/uebertragung/vermittlung/transport)</a
-					>
+					Du musst die TCP/IP Schichten in die Richtige Reihenfolge bringen und von der Grundseite Routen
+				</li>
+				<li>
+					<a sveltekit:prefetch class="btn" href="/">
+						Hier kommst du zur Grundseite</a>
 				</li>
 			{/if}
 		</ul>
 		<div class="buttonPanel">
 			<button class="btn" on:click={HandleLastRiddleButtonPressed}
-				>-> Zeige Tipp für das letzte Rätsel</button
+				>-> Zeige Tipps für das Buzzer Rätsel</button
 			>
 		</div>
 	</div>
