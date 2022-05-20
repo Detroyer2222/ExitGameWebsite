@@ -15,7 +15,7 @@
 
 	onMount(async () => {
 		if (elapsedTime == 0) {
-			setInterval(changeElapsedTime, 120000); //change to 120.000 for 2 minutes
+			setInterval(changeElapsedTime, 60000); //change to 120.000 for 2 minutes
 		}
 	});
 
